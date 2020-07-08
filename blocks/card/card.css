@@ -1,0 +1,13 @@
+@import url(./__image/card__image.css);
+@import url(./__title/card__title.css);
+@import url(./__textbox/card__textbox.css);
+@import url(./__like/card__like.css);
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
