@@ -8,17 +8,17 @@ let profileName = document.querySelector ('.profile__name');
 let profileOccupation = document.querySelector ('.profile__occupation');
 
 
-function togglePopup () {
-    popUp.classList.toggle('popup_open');
+
+openPopupButton.addEventListener('click', () => {
+    popUp.classList.add ('popup_open');
     nameInput.value = profileName.textContent;
     jobInput.value = profileOccupation.textContent;
-    
+})
+
+function closePopup () {
+    popUp.classList.remove ('popup_open');
 }
-
-openPopupButton.addEventListener('click', togglePopup)
-
-
-closePopupButton.addEventListener('click', togglePopup)
+closePopupButton.addEventListener('click', closePopup)
 
 
 function formSubmitHandler (evt) {
@@ -26,7 +26,7 @@ function formSubmitHandler (evt) {
     
     profileName.textContent = nameInput.value;
     profileOccupation.textContent = jobInput.value;
-    togglePopup();
+    closePopup();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);

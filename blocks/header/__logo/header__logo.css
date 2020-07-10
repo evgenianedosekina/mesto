@@ -1,10 +1,11 @@
 .header__logo {
-    background-image: url(../../../images/mesto_logo.svg);
+    background-image: url(../../../images/mesto_logo_b.svg);
     background-size: cover;
     width: 142px;
-    height: 28px;
+    height: 33px;
     margin-bottom: 34px;
 }
+
 @media screen and (max-width: 768px) {    
     .header__logo {
         background-image: url(../../../images/logo_mesto_mobile.svg);

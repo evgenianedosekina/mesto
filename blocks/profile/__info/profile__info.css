@@ -6,7 +6,11 @@
     align-content: center;
     padding-left: 30px;
 }
-
+@media screen and (max-width: 768px) {
+    .profile__info {
+        grid-template-columns: minmax(min-content, max-content) min-content;
+    }
+}
 @media screen and (max-width: 480px) {
     .profile__info {
         padding: 0;
