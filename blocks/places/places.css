@@ -3,14 +3,14 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(auto, 460px));
     gap: 20px 18px;
-    margin: 0 199px;
+    margin: 0 auto;
     padding-top: 50px;
     justify-content: center;
 }
 @media screen and (max-width: 1024px) {
     .places {
         margin: 0 auto;
-        padding: 50px 1em 0 1em;
+        padding: 50px 0 0 0;
     }
 }
 @media screen and (max-width: 768px) {

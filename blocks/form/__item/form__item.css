@@ -11,4 +11,9 @@
     font-size: 14px;
     line-height: 1.2;
     color: black;
+    padding-bottom: 13px;
+    margin-bottom: 30px;
     }
+.form__item:last-child {
+    margin-bottom: 34px;
+}

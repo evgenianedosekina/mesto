@@ -9,7 +9,9 @@
 
 .profile {
     display: flex;
-    margin: 0 199px 0 199px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
     padding-top: 51px;
 }
 @media screen and (max-width: 1024px) {
@@ -26,6 +28,8 @@
 
 @media screen and (max-width: 480px) {
     .profile {
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
     }
 }

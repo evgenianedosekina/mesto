@@ -10,6 +10,7 @@
 @media screen and (max-width: 480px) {
     .profile__info {
         padding: 0;
+        gap: 14px 5px;
         justify-items: center;
     }
 }
