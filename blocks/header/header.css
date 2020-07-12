@@ -1,22 +1,23 @@
 @import url(./__logo/header__logo.css);
 
-.header {     
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 0 auto;
-    padding-top: 45px;
-    border-bottom: 1px solid rgba(84, 84, 84, .7);
-  }
-
-@media screen and (max-width: 1024px) {   
-  .header {
-      max-width: 882px;
-      margin: 0 1em;
-  }    
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 0 auto;
+  padding-top: 45px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
-@media screen and (max-width: 480px) {   
+
+@media screen and (max-width: 1024px) {
   .header {
-      margin: 0;
-  }  
+    max-width: 882px;
+    margin: 0 1em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header {
+    margin: 0;
+    padding-top: 28px;
+  }
 }
