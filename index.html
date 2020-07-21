@@ -28,8 +28,9 @@
           <button class="profile__button-add" type="button"></button>
         </section>
         <section class="places">
-          <div class="card">
+          <!-- <div class="card">
             <img src="images/dombai.jpg" class="card__image" alt="Домбай" />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Домбай</h2>
               <button class="card__like" type="button"></button>
@@ -37,9 +38,10 @@
           </div>
           <div class="card">
             <img src="images/elbrus.jpg" class="card__image" alt="Эльбрус" />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Эльбрус</h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__like" type="button"></button>              
             </div>
           </div>
           <div class="card">
@@ -48,9 +50,10 @@
               class="card__image"
               alt="Карачаево-Черкессия"
             />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__like" type="button"></button>              
             </div>
           </div>
           <div class="card">
@@ -59,31 +62,34 @@
               class="card__image"
               alt="Карачаевск"
             />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__like" type="button"></button>              
             </div>
           </div>
           <div class="card">
             <img src="images/dombai.jpg" class="card__image" alt="Домбай" />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__like" type="button"></button>              
             </div>
           </div>
           <div class="card">
             <img src="images/elbrus.jpg" class="card__image" alt="Эльбрус" />
+            <button class="card__delete" type="button"></button>
             <div class="card__textbox">
               <h2 class="card__title">Эльбрус</h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__like" type="button"></button>              
             </div>
-          </div>
+          </div> -->
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&COPY;2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_type_edit-profile">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
           <form class="form" action="" method="post" name="profile">
@@ -109,8 +115,53 @@
             </fieldset>
           </form>
         </div>
+        <div class="popup popup_type_add-card">
+          <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <form class="form" action="" method="post" name="image-card">
+              <h2 class="form__heading">Новое место</h2>
+              <fieldset class="form__input-container">
+                <label for="image-title" class="form__label"></label>
+                <input
+                  type="text"
+                  name="image-title"
+                  id="image-name"
+                  class="form__item"
+                  value="image-title"
+                  placeholder="Название"
+                />
+                <label for="image-link" class="form__label"></label>
+                <input
+                  type="text"
+                  id="image-link"
+                  name="image-link"
+                  class="form__item"
+                  value="image-link"
+                  placeholder="Ссылка на картинку"
+                />
+                <input type="submit" class="form__button" value="Сохранить" />
+              </fieldset>
+            </form>
+          </div>      
       </div>
+      <div class="popup popup_type_image">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <img class="popup__image" src="" alt="">
+          <h3 class="popup__title"></h3>
+        </div>      
     </div>
+    </div>
+    <template id="card-template">
+      <div class="card">
+        <img class="card__image" alt="Фото места" src="" />
+        <button class="card__delete" type="button"></button>
+        <div class="card__textbox">
+          <h2 class="card__title"></h2>
+          <button class="card__like" type="button"></button>
+        </div>
+      </div>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
