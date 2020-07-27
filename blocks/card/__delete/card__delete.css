@@ -12,6 +12,7 @@
 }
 .card__delete:hover {
     opacity: 0.6;
+    cursor: pointer;
   }
   .card__delete:focus {
     outline: none;
