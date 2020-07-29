@@ -14,10 +14,10 @@ const closeImage = popUpImage.querySelector(".popup__button-close");
 
 // Формы
 const formElement = popUpEditProfile.querySelector(".form");
-let nameInput = formElement.querySelector("#name");
-let jobInput = formElement.querySelector("#occupation");
-let profileName = document.querySelector(".profile__name");
-let profileOccupation = document.querySelector(".profile__occupation");
+const nameInput = formElement.querySelector("#name");
+const jobInput = formElement.querySelector("#occupation");
+const profileName = document.querySelector(".profile__name");
+const profileOccupation = document.querySelector(".profile__occupation");
 
 const addCardForm = popUpAddCard.querySelector(".form");
 const imageInput = addCardForm.querySelector("#image-title");
@@ -85,10 +85,7 @@ function createCard(data) {
     const deleteCard = cardDeleteButton.closest(".card");
     deleteCard.remove();
   });
-  cardImage.addEventListener("click", () => {
-    handleImageClick();
-  });
-
+  
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -110,9 +107,10 @@ initialCards.forEach((data) => {
 });
 
 function handleImageClick(src, textcontent) {
-  popUpImage.classList.add("popup_open");
+  toggleModal(popUpImage);
   popUpImageTitle.textContent = textcontent;
   popUpImageSrc.src = src;
+  popUpImageSrc.alt = initialCards.name;
 }
 
 // Открытие/Закрытие поп-апов
