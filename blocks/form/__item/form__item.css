@@ -19,6 +19,11 @@
   margin-bottom: 48px;
 }
 
+
+.form__item::placeholder {
+  color: #C4C4C4;
+}
+
 @media screen and (max-width: 480px) {
   .form__item {
     margin-bottom: 20px;

@@ -3,6 +3,7 @@
 @import url(./__label/form__label.css);
 @import url(./__item/form__item.css);
 @import url(./__button/form__button.css);
+@import url(./__input-error/form__input-error.css);
 
 .form {
   max-width: 358px;

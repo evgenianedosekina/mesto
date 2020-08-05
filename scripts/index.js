@@ -8,14 +8,15 @@ const openEditProfileButton = document.querySelector(".profile__button-edit");
 const closeEditProfileButton = popUpEditProfile.querySelector(
   ".popup__button-close"
 );
+const popupClose = document.querySelectorAll(".popup");
 const openAddCardButton = document.querySelector(".profile__button-add");
 const closeAddCardButton = popUpAddCard.querySelector(".popup__button-close");
 const closeImage = popUpImage.querySelector(".popup__button-close");
 
 // Формы
-const formElement = popUpEditProfile.querySelector(".form");
-const nameInput = formElement.querySelector("#name");
-const jobInput = formElement.querySelector("#occupation");
+const editProfileForm = popUpEditProfile.querySelector(".form");
+const nameInput = editProfileForm.querySelector("#name");
+const jobInput = editProfileForm.querySelector("#occupation");
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 
@@ -128,7 +129,7 @@ function formSubmitHandler(evt) {
   toggleModal(popUpEditProfile);
 }
 
-formElement.addEventListener("submit", formSubmitHandler);
+editProfileForm.addEventListener("submit", formSubmitHandler);
 
 openEditProfileButton.addEventListener("click", () => {
   if (!popUpEditProfile.classList.contains("popup_open")) {
@@ -140,6 +141,16 @@ openEditProfileButton.addEventListener("click", () => {
 closeEditProfileButton.addEventListener("click", () => {
   toggleModal(popUpEditProfile);
 });
+
+/** popupClose.addEventListener("click", () => {
+  toggleModal(modalWindow);
+});**/
+
+/** popupClose.addEventListener('keydown', function(evt) {
+	if (evt.key === "Escape") {
+		toggleModal(popUpAddCard, popUpEditProfile);
+	}
+});**/
 
 // Карточка
 
@@ -165,3 +176,6 @@ closeAddCardButton.addEventListener("click", () => {
 closeImage.addEventListener("click", () => {
   toggleModal(popUpImage);
 });
+
+
+

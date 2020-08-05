@@ -35,7 +35,7 @@
       <div class="popup popup_type_edit-profile">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
-          <form class="form" action="" method="post" name="profile">
+          <form class="form" action="" method="post" name="profile" novalidate>
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__input-container">
               <label for="name" class="form__label"></label>
@@ -45,7 +45,11 @@
                 id="name"
                 class="form__item"
                 value="name"
+                required
+                minlength="2"
+                maxlength="40"
               />
+              <span class='form__input-error' id='name-input-error'></span>
               <label for="occupation" class="form__label"></label>
               <input
                 type="text"
@@ -53,8 +57,12 @@
                 name="occupation"
                 class="form__item"
                 value="occupation"
+                required
+                minlength="2"
+                maxlength="200"
               />
-              <input type="submit" class="form__button" value="Сохранить" />
+              <span class='form__input-error' id='occupation-input-error'></span>
+              <input type="submit" class="form__button form__button_disabled" value="Сохранить" disabled/>
             </fieldset>
           </form>
         </div>
@@ -62,7 +70,7 @@
       <div class="popup popup_type_add-card">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
-          <form class="form" action="" method="post" name="image-card">
+          <form class="form" action="" method="post" name="image-card" novalidate>
             <h2 class="form__heading">Новое место</h2>
             <fieldset class="form__input-container">
               <label for="image-title" class="form__label"></label>
@@ -72,16 +80,22 @@
                 id="image-title"
                 class="form__item"
                 placeholder="Название"
+                required
+                minlength="1"
+                maxlength="30"
               />
+              <span class='form__input-error' id='image-input-error'></span>
               <label for="image-link" class="form__label"></label>
               <input
-                type="text"
+                type="url"
                 id="image-link"
                 name="image-link"
                 class="form__item"
                 placeholder="Ссылка на картинку"
+                required
               />
-              <input type="submit" class="form__button" value="Создать" />
+              <span class='form__input-error' id='url-input-error'></span>
+              <input type="submit" class="form__button form__button_disabled" value="Создать" disabled/>
             </fieldset>
           </form>
         </div>
@@ -104,6 +118,7 @@
         </div>
       </template>
       <script src="./scripts/index.js"></script>
+      <script src="./scripts/validation.js"></script>
     </div>
   </body>
 </html>
