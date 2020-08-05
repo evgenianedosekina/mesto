@@ -7,6 +7,8 @@ const settings = {
   errorClass: "form__input-error_active",
 };
 
+
+
 const showInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
   inputElement.classList.add(inputErrorClass);
@@ -29,7 +31,7 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, inputSelector, submitButtonSelector) => {
   const inputs = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelectorAll(submitButtonSelector);
 
@@ -43,7 +45,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
-const checkButtonState = (inputs, buttonElement) => {
+const checkButtonState = (inputs, buttonElement, submitButtonSelector, inactiveButtonClass) => {
   if (hasInvalidInput(inputs)) {
     buttonElement.classList.remove(submitButtonSelector);
     buttonElement.classList.add(inactiveButtonClass);
@@ -71,7 +73,7 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
     const fieldsetList = Array.from(formElement.querySelectorAll(".form__input-container"));
 
     fieldsetList.forEach((fieldSet) => {
-      setEventListeners(fieldSet);
+      setEventListeners(fieldSet, inputSelector);
     });
   });
 };
