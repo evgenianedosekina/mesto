@@ -128,19 +128,23 @@ function closeModal(modalWindow) {
 
 function closeEsc(evt){
   const openPopup = document.querySelector(".popup_open");
-    if (evt.key === 'Escape' && openPopup !== null) {
+    if (evt.key === 'Escape') {
       closeModal(openPopup);
     }
   }
 
-//document.addEventListener('keydown', closeEsc);
 
-document.addEventListener('click', function(e) {
+function closeModalByOverlay(e) {
   if (!e.target.closest('.popup__container')){
     closeModal(e.target.closest('.popup'));
   } 
-});
+}
 
+
+
+popUpEditProfile.addEventListener("click", closeModalByOverlay);
+popUpAddCard.addEventListener("click", closeModalByOverlay);
+popUpImage.addEventListener("click", closeModalByOverlay);
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -177,6 +181,13 @@ function addCardSubmitHandler(evt) {
 
   closeModal(popUpAddCard);
 }
+function submitEnterKey(evt){
+  if (evt.key === 'Enter') {
+    renderCard({ name: imageInput.value, link: linkInput.value });
+  }
+}
+imageInput.addEventListener("keydown", submitEnterKey);
+linkInput.addEventListener("keydown", submitEnterKey);
 
 addCardForm.addEventListener("submit", addCardSubmitHandler);
 
