@@ -9,49 +9,49 @@ const settings = {
 
 
 
-const showInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
+const showInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+  const errorElement = formElement.querySelector(`#${inputElement.name}-error`)
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(errorClass);
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
   inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = "";
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
 };
 
-const setEventListeners = (formElement, inputSelector, submitButtonSelector) => {
+const setEventListeners = (formElement, inputSelector, submitButtonSelector, inputErrorClass, errorClass, inactiveButtonClass) => {
   const inputs = Array.from(formElement.querySelectorAll(inputSelector));
-  const buttonElement = formElement.querySelectorAll(submitButtonSelector);
+  const buttonElement = formElement.querySelector(submitButtonSelector);
 
-  checkButtonState(inputs, buttonElement);
+  checkButtonState(inputs, buttonElement, submitButtonSelector, inactiveButtonClass);
 
   inputs.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      checkButtonState(inputs, buttonElement);
+      checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
+      checkButtonState(inputs, buttonElement, submitButtonSelector, inactiveButtonClass);
     });
   });
 };
 
 const checkButtonState = (inputs, buttonElement, submitButtonSelector, inactiveButtonClass) => {
   if (hasInvalidInput(inputs)) {
-    buttonElement.classList.remove(submitButtonSelector);
+
     buttonElement.classList.add(inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.add(submitButtonSelector);
+    
     buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.disabled = false;
   }
@@ -73,7 +73,7 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
     const fieldsetList = Array.from(formElement.querySelectorAll(".form__input-container"));
 
     fieldsetList.forEach((fieldSet) => {
-      setEventListeners(fieldSet, inputSelector);
+      setEventListeners(fieldSet, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
     });
   });
 };

@@ -8,7 +8,6 @@ const openEditProfileButton = document.querySelector(".profile__button-edit");
 const closeEditProfileButton = popUpEditProfile.querySelector(
   ".popup__button-close"
 );
-const popupClose = document.querySelectorAll(".popup");
 const openAddCardButton = document.querySelector(".profile__button-add");
 const closeAddCardButton = popUpAddCard.querySelector(".popup__button-close");
 const closeImage = popUpImage.querySelector(".popup__button-close");
@@ -108,7 +107,7 @@ initialCards.forEach((data) => {
 });
 
 function handleImageClick(src, textcontent) {
-  toggleModal(popUpImage);
+  openModal(popUpImage);
   popUpImageTitle.textContent = textcontent;
   popUpImageSrc.src = src;
   popUpImageSrc.alt = initialCards.name;
@@ -117,16 +116,38 @@ function handleImageClick(src, textcontent) {
 // Открытие/Закрытие поп-апов
 
 //Профиль
-function toggleModal(modalWindow) {
-  modalWindow.classList.toggle("popup_open");
+function openModal(modalWindow) {
+  modalWindow.classList.add("popup_open");
+  document.addEventListener('keydown', closeEsc);
 }
+function closeModal(modalWindow) {
+  modalWindow.classList.remove("popup_open");
+  document.removeEventListener('keydown', closeEsc);
+  }
+
+
+function closeEsc(evt){
+  const openPopup = document.querySelector(".popup_open");
+    if (evt.key === 'Escape' && openPopup !== null) {
+      closeModal(openPopup);
+    }
+  }
+
+//document.addEventListener('keydown', closeEsc);
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.popup__container')){
+    closeModal(e.target.closest('.popup'));
+  } 
+});
+
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
-  toggleModal(popUpEditProfile);
+  closeModal(popUpEditProfile);
 }
 
 editProfileForm.addEventListener("submit", formSubmitHandler);
@@ -136,21 +157,16 @@ openEditProfileButton.addEventListener("click", () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileOccupation.textContent;
   }
-  toggleModal(popUpEditProfile);
+  openModal(popUpEditProfile);
 });
 closeEditProfileButton.addEventListener("click", () => {
-  toggleModal(popUpEditProfile);
+  closeModal(popUpEditProfile);
 });
 
-/** popupClose.addEventListener("click", () => {
-  toggleModal(modalWindow);
-});**/
 
-/** popupClose.addEventListener('keydown', function(evt) {
-	if (evt.key === "Escape") {
-		toggleModal(popUpAddCard, popUpEditProfile);
-	}
-});**/
+
+
+
 
 // Карточка
 
@@ -159,22 +175,22 @@ function addCardSubmitHandler(evt) {
 
   renderCard({ name: imageInput.value, link: linkInput.value });
 
-  toggleModal(popUpAddCard);
+  closeModal(popUpAddCard);
 }
 
 addCardForm.addEventListener("submit", addCardSubmitHandler);
 
 openAddCardButton.addEventListener("click", () => {
-  toggleModal(popUpAddCard);
+  openModal(popUpAddCard);
 });
 closeAddCardButton.addEventListener("click", () => {
-  toggleModal(popUpAddCard);
+  closeModal(popUpAddCard);
 });
 
 // Фото
 
 closeImage.addEventListener("click", () => {
-  toggleModal(popUpImage);
+  closeModal(popUpImage);
 });
 
 
