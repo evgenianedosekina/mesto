@@ -181,13 +181,6 @@ function addCardSubmitHandler(evt) {
 
   closeModal(popUpAddCard);
 }
-function submitEnterKey(evt){
-  if (evt.key === 'Enter') {
-    renderCard({ name: imageInput.value, link: linkInput.value });
-  }
-}
-imageInput.addEventListener("keydown", submitEnterKey);
-linkInput.addEventListener("keydown", submitEnterKey);
 
 addCardForm.addEventListener("submit", addCardSubmitHandler);
 
