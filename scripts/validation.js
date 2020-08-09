@@ -63,17 +63,37 @@ const hasInvalidInput = (inputs) => {
   });
 };
 
-const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
+
+
+
+const enableValidation = ({
+  formSelector,
+  inputSelector,
+  submitButtonSelector,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass,
+}) => {
   const forms = Array.from(document.querySelectorAll(formSelector));
 
   forms.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      
     });
-    
-      setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
+    setEventListeners(
+      formElement,
+      inputSelector,
+      submitButtonSelector,
+      inactiveButtonClass,
+      inputErrorClass,
+      errorClass
+    );
     
   });
+  
 };
 
 enableValidation(settings);
+
+

@@ -125,6 +125,7 @@ function closeModal(modalWindow) {
   document.removeEventListener('keydown', closeEsc);
   }
 
+// Закрытие по кнопке Escape
 
 function closeEsc(evt){
   const openPopup = document.querySelector(".popup_open");
@@ -133,6 +134,7 @@ function closeEsc(evt){
     }
   }
 
+// Закрытие по клику вне модалки
 
 function closeModalByOverlay(e) {
   if (!e.target.closest('.popup__container')){
@@ -140,31 +142,34 @@ function closeModalByOverlay(e) {
   } 
 }
 
-
-
 popUpEditProfile.addEventListener("click", closeModalByOverlay);
 popUpAddCard.addEventListener("click", closeModalByOverlay);
 popUpImage.addEventListener("click", closeModalByOverlay);
 
+// Отправка формы
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
   closeModal(popUpEditProfile);
+  editProfileForm.reset();
 }
 
 editProfileForm.addEventListener("submit", formSubmitHandler);
+
 
 openEditProfileButton.addEventListener("click", () => {
   if (!popUpEditProfile.classList.contains("popup_open")) {
     nameInput.value = profileName.textContent;
     jobInput.value = profileOccupation.textContent;
-  }
+  } 
   openModal(popUpEditProfile);
+  
 });
 closeEditProfileButton.addEventListener("click", () => {
   closeModal(popUpEditProfile);
+  
 });
 
 
@@ -180,6 +185,7 @@ function addCardSubmitHandler(evt) {
   renderCard({ name: imageInput.value, link: linkInput.value });
 
   closeModal(popUpAddCard);
+  addCardForm.reset();
 }
 
 addCardForm.addEventListener("submit", addCardSubmitHandler);
